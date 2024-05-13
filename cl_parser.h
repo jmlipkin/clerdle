@@ -11,6 +11,8 @@
 #ifndef CL_PARSE_H
 #define CL_PARSE_H
 
+#include "game.h"
+
 #include <vector>
 #include <string>
 
@@ -25,7 +27,7 @@ class CLParser {
     public:
         CLParser(int count, char *args[]);
         std::string get_player_name();
-        void parse_command_line();
+        Game::mode parse_command_line();
 };
 
 #endif

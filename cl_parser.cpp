@@ -9,6 +9,7 @@
 // ////////////////////////////////////////////////////////
 
 #include "cl_parser.h"
+#include "game.h"
 
 #include <iostream>
 #include <vector>
@@ -60,7 +61,6 @@ std::string CLParser::get_player_name()
 
 void CLParser::parse_command_line()
 {
-    // TODO: fix exception throwing for too many names
     set_player_name();
 }
 
