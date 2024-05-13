@@ -21,5 +21,6 @@ class Histogram {
         int m_games_won;
     public:
         Histogram(std::string name, std::vector<int> game_data);
+        void display_histogram(void);
 };
 #endif

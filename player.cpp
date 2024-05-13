@@ -8,6 +8,7 @@
 // ////////////////////////////////////////////////////////
 
 #include "player.h"
+#include "histogram.h"
 
 #include <string>
 #include <sstream>
@@ -16,6 +17,13 @@ Player::Player(std::string name, std::vector<int> game_data)
 {
     m_name = name;
     m_game_data = game_data;
+    m_histogram = new Histogram(name, game_data);
+}
+
+Player::~Player()
+{
+    delete m_histogram;
+    m_histogram = nullptr;
 }
 
 std::string Player::to_string(void)
