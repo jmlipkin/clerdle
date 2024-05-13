@@ -1,1 +1,1 @@
-.build/clerdle.o: clerdle.cpp
+.build/clerdle.o: clerdle.cpp player_collection.h player.h

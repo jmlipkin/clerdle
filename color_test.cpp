@@ -10,6 +10,7 @@
 #include "color.h"
 #include <iostream>
 
+#if 0
 int main(void)
 {
     using namespace std;
@@ -17,3 +18,5 @@ int main(void)
     cout << "Testing normal." /*<< Color::setFg(Color::green)*/ << Color::setBg(Color::red) << "other text   |" << Color::reset() << endl;
     return 0;
 }
+
+#endif

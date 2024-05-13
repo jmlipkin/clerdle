@@ -1,1 +1,1 @@
-EXE := color_test
+EXE := clerdle

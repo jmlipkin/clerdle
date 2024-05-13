@@ -8,9 +8,12 @@
 //
 // ////////////////////////////////////////////////////////
 
-// int main(int argc, char* argv[])
-// {
-//     // Just setting up!
+#include "player_collection.h"
 
-//     return 0;
-// }
+int main(int argc, char* argv[])
+{
+    // Just setting up!
+    PlayerCollection my_players{};
+
+    return 0;
+}
