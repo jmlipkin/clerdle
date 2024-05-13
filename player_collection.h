@@ -24,6 +24,8 @@ class PlayerCollection {
         void read_from_file(void);
         void write_to_file(void);
 
+        void add_player_from_in_vector(std::vector<std::string>&);
+
     public:
         PlayerCollection();
         ~PlayerCollection();

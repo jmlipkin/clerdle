@@ -12,12 +12,23 @@
 #include <string>
 #include <sstream>
 
+Player::Player(std::string name, std::vector<int> game_data)
+{
+    m_name = name;
+    m_game_data = game_data;
+}
+
 std::string Player::to_string(void)
 {
     // TODO: update string output to include stat information
     std::string str{};
     std::stringstream ss(str);
     ss << m_name << ',';
-
-    return ss.str();
+    for (auto i : m_game_data)
+    {
+        ss << i << ',';
+    }
+    str = ss.str();
+    str.pop_back();
+    return str;
 }

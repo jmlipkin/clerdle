@@ -11,13 +11,14 @@
 #define PLAYER_H
 
 #include <string>
+#include <vector>
 
 class Player {
     private:
         std::string m_name;
-        // TODO: add game information
+        std::vector<int> m_game_data;
     public:
-
+        Player(std::string name, std::vector<int> game_data);
         std::string to_string(void);
 };
 
