@@ -31,7 +31,6 @@ int main(int argc, char* argv[])
         return -1;
     }
     std::string player_name = parse.get_player_name();
-    std::cout << player_name << std::endl;
 
     return 0;
 }
