@@ -1,0 +1,1 @@
+EXE := color_test
