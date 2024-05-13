@@ -28,7 +28,7 @@ Player::~Player()
 
 std::string Player::to_string(void)
 {
-    // TODO: update string output to include stat information
+    // TODO: Add quote/dequote functionality
     std::string str{};
     std::stringstream ss(str);
     ss << m_name << ',';
