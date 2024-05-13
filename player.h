@@ -27,5 +27,6 @@ class Player {
         std::string to_string(void);
         std::string get_name(void) { return m_name; }
         std::vector<int> get_game_data(void) { return m_game_data; }
+        void get_histogram(void) { m_histogram->display_histogram(); }
 };
 #endif

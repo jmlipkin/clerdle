@@ -1,1 +1,1 @@
-.build/player.o: player.cpp player.h
+.build/player.o: player.cpp player.h histogram.h

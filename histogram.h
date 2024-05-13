@@ -19,6 +19,8 @@ class Histogram {
         std::vector<int> m_game_data;
         int m_total_games;
         int m_games_won;
+        void make_bar(int);
+
     public:
         Histogram(std::string name, std::vector<int> game_data);
         void display_histogram(void);

@@ -10,6 +10,10 @@
 
 #include "player_collection.h"
 
+// temporary
+#include "player.h"
+#include <vector>
+
 int main(int argc, char* argv[])
 {
     // Just setting up!
