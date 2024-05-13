@@ -20,6 +20,7 @@ class Player {
     public:
         Player(std::string name, std::vector<int> game_data);
         std::string to_string(void);
+        std::string get_name(void) { return m_name; }
+        std::vector<int> get_game_data(void) { return m_game_data; }
 };
-
 #endif
