@@ -59,8 +59,55 @@ std::string CLParser::get_player_name()
     return m_player_name;
 }
 
-void CLParser::parse_command_line()
+Game::mode CLParser::parse_command_line()
 {
     set_player_name();
+
+    bool h, s, t, g = false;
+    evaluate_bools(h, s, t, g);
+
+    if (h == true)
+    {
+        Game::display_usage();
+    }
+    if ((g == true && s == true) || (s == true && t == true) || (g == true && t == true))
+    {
+        throw std::out_of_range("ERROR: Those arguments cannot be used together.");
+    }
+    if (g == true)
+    {
+        return Game::mode::generate;
+    }
+    if (s == true)
+    {
+        if (m_player_name != "NO NAME")
+            return Game::mode::playerstats;
+        else if (s == true)
+            return Game::mode::allstats;
+    }
+    if (t == true)
+    {
+        return Game::mode::test;
+    }
+    
+    if (m_player_name == "NO NAME")
+    {
+        return Game::mode::missing_player;
+    }
+    return Game::mode::normal;
 }
 
+void CLParser::evaluate_bools(bool &h, bool &s, bool &t, bool &g)
+{
+    for (auto i : argv)
+    {
+        if (i == "-s")
+            s = true;
+        if (i == "-t")
+            t = true;
+        if (i == "-g")
+            g = true;
+        if (i == "-h" || i == "--help")
+            h = true;
+    }
+}

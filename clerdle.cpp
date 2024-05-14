@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <exception>
 #include <stdexcept>
 
@@ -27,13 +28,15 @@ int main(int argc, char* argv[])
     {
         mode = parse.parse_command_line();
     }
-    catch(const std::invalid_argument& e)
+    catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
         Game::display_usage();
         return -1;
     }
     std::string player_name = parse.get_player_name();
+
+    Game my_game{player_name, mode};
 
     return 0;
 }

@@ -23,6 +23,7 @@ class CLParser {
         std::string m_player_name = "NO NAME";
 
         void set_player_name();
+        void evaluate_bools(bool &h, bool &s, bool &t, bool &g);
 
     public:
         CLParser(int count, char *args[]);
