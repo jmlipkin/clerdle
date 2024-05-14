@@ -8,20 +8,16 @@
 //
 // ////////////////////////////////////////////////////////
 
-#include "player_collection.h"
 #include "cl_parser.h"
 #include "game.h"
 
 #include <iostream>
-#include <string>
-#include <vector>
 #include <exception>
 #include <stdexcept>
 
 int main(int argc, char* argv[])
 {
     // Just setting up!
-    PlayerCollection my_players{};
     CLParser parse{argc, argv};
     Game::mode mode{Game::usage};
     try
@@ -37,6 +33,7 @@ int main(int argc, char* argv[])
     std::string player_name = parse.get_player_name();
 
     Game my_game{player_name, mode};
+    my_game.play();
 
     return 0;
 }

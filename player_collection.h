@@ -29,6 +29,8 @@ class PlayerCollection {
     public:
         PlayerCollection();
         ~PlayerCollection();
+        void get_all_stats();
+        Player get_player(std::string name);
 };
 
 #endif

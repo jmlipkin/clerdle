@@ -12,8 +12,12 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 #include <fstream>
 #include <sstream>
+
+#include <exception>
+#include <stdexcept>
 
 const std::string PlayerCollection::filename = "player_data.csv";
 const std::string PlayerCollection::file_header = "Player,None,A1,A2,A3,A4,A5,A6";
@@ -84,4 +88,23 @@ void PlayerCollection::add_player_from_in_vector(std::vector<std::string> &row)
     }
     Player *playerptr = new Player(player_name, game_data);
     m_players.push_back(playerptr);
+}
+
+void PlayerCollection::get_all_stats(void)
+{
+    for (auto i : m_players)
+    {
+        i->get_histogram();
+    }
+}
+Player PlayerCollection::get_player(std::string name)
+{
+    for (auto i : m_players)
+    {
+        if (i->get_name() == name)
+        {
+            return *i;
+        }
+    }
+    throw std::out_of_range("Player not found!");
 }
