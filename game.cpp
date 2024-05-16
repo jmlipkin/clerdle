@@ -24,49 +24,43 @@ void Game::display_usage()
 
 void Game::play()
 {
-    try
+    switch (m_mode)
     {
-        switch (m_mode)
-        {
-            case normal:
-                normal_gameplay();
-                break;
-            case allstats:
-                my_players.get_all_stats();
-                break;
-            case playerstats:
-                my_players.get_player(m_player_name).get_histogram();
-                break;
-            case test:
-                // TODO: puzzle.show_solution();
-                normal_gameplay();
-                break;
-            case generate:
-                generate_mode();
-                break;
-            case missing_player:
-                missing_player_mode();
-                break;
-            case play_with_help:
-                display_usage();
-                normal_gameplay();
-                break;
-            default:
-                display_usage();
-        }
+        case normal:
+            break;
+        case allstats:
+            my_players.get_all_stats();
+            return;
+        case playerstats:
+            my_players.get_player_stats(m_player_name);
+            return;
+        case test:
+            // TODO: puzzle.show_solution();
+            break;
+        case generate:
+            generate_mode();
+            return;
+        case missing_player:
+            prompt_for_player();
+            break;
+        case play_with_help:
+            display_usage();
+            break;
+        default:
+            display_usage();
+            return;
     }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    normal_gameplay();
 }
 
 // TODO
 void Game::normal_gameplay()
-{}
+{
+    std::cout << "Entering normal gameplay" << std::endl;
+}
 
 // TODO: add no-quotes, no commas validation
-void Game::missing_player_mode()
+void Game::prompt_for_player()
 {
     bool valid = false;
     std::string name{};
@@ -83,7 +77,6 @@ void Game::missing_player_mode()
             valid = true;
         }
     }
-    normal_gameplay();
 }
 
 // TODO: Fix generate cl entry

@@ -30,7 +30,8 @@ class PlayerCollection {
         PlayerCollection();
         ~PlayerCollection();
         void get_all_stats();
-        Player get_player(std::string name);
+        void get_player_stats(std::string name);
+        Player* get_player(std::string name);
 };
 
 #endif

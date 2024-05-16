@@ -10,6 +10,8 @@
 #include "player.h"
 #include "histogram.h"
 
+#include <iostream>
+
 #include <string>
 #include <sstream>
 
@@ -22,6 +24,7 @@ Player::Player(std::string name, std::vector<int> game_data)
 
 Player::~Player()
 {
+    std::cout << "Player <" << get_name() << "> destructor" << std::endl;
     delete m_histogram;
     m_histogram = nullptr;
 }

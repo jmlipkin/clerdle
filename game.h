@@ -25,7 +25,7 @@ class Game {
         mode m_mode;
 
         void normal_gameplay();
-        void missing_player_mode();
+        void prompt_for_player();
         void generate_mode();
 
     public:

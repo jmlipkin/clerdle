@@ -97,13 +97,19 @@ void PlayerCollection::get_all_stats(void)
         i->get_histogram();
     }
 }
-Player PlayerCollection::get_player(std::string name)
+
+void PlayerCollection::get_player_stats(std::string name)
+{
+    get_player(name)->get_histogram();
+}
+
+Player* PlayerCollection::get_player(std::string name)
 {
     for (auto i : m_players)
     {
         if (i->get_name() == name)
         {
-            return *i;
+            return i;
         }
     }
     throw std::out_of_range("Player not found!");
