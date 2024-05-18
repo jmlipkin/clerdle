@@ -20,7 +20,7 @@ class PlayerCollection {
         static const std::string filename;
         static const std::string file_header;
 
-        // File I/o
+        // File I/O
         void read_from_file(void);
         void write_to_file(void);
         void dequote(std::string &string);
@@ -30,6 +30,11 @@ class PlayerCollection {
     public:
         PlayerCollection();
         ~PlayerCollection();
+
+        void update_player_data(const std::string &name, const int &trial);
+
+        void display_all_stats();
+        void display_player_stats(const std::string &name);
 };
 
 #endif

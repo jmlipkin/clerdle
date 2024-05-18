@@ -14,6 +14,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <exception>
+#include <stdexcept>
 
 const std::string PlayerCollection::filename = "player_data.csv";
 const std::string PlayerCollection::file_header = "Player,None,A1,A2,A3,A4,A5,A6";
@@ -94,4 +96,42 @@ void PlayerCollection::add_player_from_in_vector(std::vector<std::string> &row)
     }
     Player *playerptr = new Player(player_name, game_data);
     m_players.push_back(playerptr);
+}
+
+void PlayerCollection::update_player_data(const std::string &name, const int & trial)
+{
+    for (auto i : m_players)
+    {
+        if (i->get_name() == name)
+        {
+            i->increment_stats(trial);
+            return;
+        }
+    }
+    Player *ptr = new Player(name, Player::new_player_data);
+    m_players.push_back(ptr);
+    ptr->increment_stats(trial);
+}
+
+void PlayerCollection::display_all_stats()
+{
+    for (auto i : m_players)
+    {
+        i->get_histogram();
+    }
+}
+
+void PlayerCollection::display_player_stats(const std::string &name)
+{
+    for (auto i : m_players)
+    {
+        if (i->get_name() == name)
+        {
+            i->get_histogram();
+            return;
+        }
+    }
+    Player *ptr = new Player(name, Player::new_player_data);
+    m_players.push_back(ptr);
+    ptr->get_histogram();
 }

@@ -23,11 +23,18 @@ class Player {
 
     public:
         static const std::string no_name;
+        static const std::vector<int> new_player_data;
 
         Player(std::string name, std::vector<int> game_data);
         ~Player();
+
+        void increment_stats(const int &trial);
+        
+        // Print functions
         std::string to_string(void);
         std::string to_quoted_string(void);
+
+        // Static functions
         static bool is_valid_name(const std::string &name);
 
         // getter functions

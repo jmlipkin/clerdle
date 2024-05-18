@@ -14,6 +14,7 @@
 #include <sstream>
 
 const std::string Player::no_name = "NO NAME";
+const std::vector<int> Player::new_player_data{0, 0, 0, 0, 0, 0, 0};
 
 Player::Player(std::string name, std::vector<int> game_data)
 {
@@ -26,6 +27,15 @@ Player::~Player()
 {
     delete m_histogram;
     m_histogram = nullptr;
+}
+
+// Takes an integer argument, which represents the trial.
+// Increments by 1 player's game data at the index of input. 
+// <player>.increment_stats(4) would change <player>'s game
+// data from [0 0 0 0 0 0 0] to [0 0 0 0 1 0 0].
+void Player::increment_stats(const int &trial)
+{
+    this->m_game_data[trial]++;
 }
 
 std::string Player::to_string(void)
