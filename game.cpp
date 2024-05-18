@@ -16,6 +16,12 @@ const std::vector<std::string> Game::mode_map {
     "normal"
 };
 
+Game::Game(std::string player_name, mode mode, int gen_count)
+    : m_player_name(player_name), m_mode(mode), m_generator_count(gen_count)
+{
+    std::cout << "Game mode set to <" << mode_map[m_mode] << ">!" << std::endl;
+}
+
 void Game::display_usage()
 {
     using namespace std;

@@ -20,11 +20,17 @@ class Game {
     private:
         std::string m_player_name;
         mode m_mode;
+        int m_generator_count;
 
     public:
-        Game(std::string player_name, mode mode) : m_player_name(player_name), m_mode(mode) {}
+        Game(std::string player_name, mode mode, int gen_count);
         // TODO: add implementation
         static void display_usage();
+
+        // Getter functions -- temporary
+        std::string get_player_name() { return m_player_name; }
+        mode get_mode() { return m_mode; }
+        int get_generator_count() { return m_generator_count; }
 };
 
 #endif

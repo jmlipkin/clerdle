@@ -25,6 +25,10 @@ class Player {
         Player(std::string name, std::vector<int> game_data);
         ~Player();
         std::string to_string(void);
+        std::string to_quoted_string(void);
+        static bool is_valid_name(const std::string &name);
+
+        // getter functions
         std::string get_name(void) { return m_name; }
         std::vector<int> get_game_data(void) { return m_game_data; }
         void get_histogram(void) { m_histogram->display_histogram(); }

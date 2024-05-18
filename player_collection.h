@@ -23,6 +23,7 @@ class PlayerCollection {
         // File I/o
         void read_from_file(void);
         void write_to_file(void);
+        void dequote(std::string &string);
 
         void add_player_from_in_vector(std::vector<std::string>&);
 

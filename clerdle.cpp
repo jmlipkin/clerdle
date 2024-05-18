@@ -20,13 +20,13 @@
 
 int main(int argc, char* argv[])
 {
-    // Just setting up!
+    // main block of code
     PlayerCollection my_players{};
     CLParser parse{argc, argv};
-    Game::mode mode{Game::usage};
+
     try
     {
-        mode = parse.parse_command_line();
+        parse.parse_command_line();
     }
     catch(const std::exception& e)
     {
@@ -34,9 +34,13 @@ int main(int argc, char* argv[])
         Game::display_usage();
         return -1;
     }
-    std::string player_name = parse.get_player_name();
 
-    Game my_game{player_name, mode};
+    // Commented out while testing CL_Parser
+    std::string player_name = parse.get_player_name();
+    Game::mode mode = parse.get_game_mode();
+    int gen_count = parse.get_generator_count();
+
+    Game my_game{player_name, mode, gen_count};
 
     return 0;
 }

@@ -53,6 +53,7 @@ void PlayerCollection::read_from_file(void)
         string holder{};
         while (getline(ss, holder, ','))
         {
+            dequote(holder);
             row.push_back(holder);
         }
         add_player_from_in_vector(row);
@@ -68,9 +69,18 @@ void PlayerCollection::write_to_file(void)
     out_file << file_header << endl;
     for (Player* i : m_players)
     {
-        out_file << i->to_string() << endl;
+        out_file << i->to_quoted_string() << endl;
     }
     out_file.close();
+}
+
+void PlayerCollection::dequote(std::string &string)
+{
+    if (string.front() == '\"' && string.back() == '\"')
+    {
+        string.erase(string.begin());
+        string.pop_back();
+    }
 }
 
 void PlayerCollection::add_player_from_in_vector(std::vector<std::string> &row)
