@@ -76,6 +76,7 @@ Game::mode CLParser::parse_command_line()
     }
     if (g == true)
     {
+        set_generator_count();
         return Game::mode::generate;
     }
     if (s == true)
@@ -110,4 +111,30 @@ void CLParser::evaluate_bools(bool &h, bool &s, bool &t, bool &g)
         if (i == "-h" || i == "--help")
             h = true;
     }
+}
+
+void CLParser::set_generator_count()
+{
+    std::vector<int> candidate_nums;
+    int cand = 0;
+    for (auto i : argv)
+    {
+        try 
+        {
+            cand = stoi(i);
+            candidate_nums.push_back(cand);
+            std::cout << '<' << i << "> added to int vector." << std::endl;
+        }
+        catch (...)
+        {
+            std::cout << '<' << i << "> not added to int vector." << std::endl;
+            continue;
+        }
+    }
+
+}
+
+int CLParser::get_generator_count()
+{
+    return m_gen_count;
 }

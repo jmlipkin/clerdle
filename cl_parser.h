@@ -21,14 +21,17 @@ class CLParser {
         int argc;
         std::vector<std::string> argv;
         std::string m_player_name = "NO NAME";
+        int m_gen_count = 0;
 
-        void set_player_name();
         void evaluate_bools(bool &h, bool &s, bool &t, bool &g);
+        void set_player_name();
+        void set_generator_count();
 
     public:
         CLParser(int count, char *args[]);
-        std::string get_player_name();
         Game::mode parse_command_line();
+        std::string get_player_name();
+        int get_generator_count();
 };
 
 #endif
