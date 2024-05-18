@@ -14,16 +14,16 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 #include <exception>
 #include <stdexcept>
 
 int main(int argc, char* argv[])
 {
-    // main block of code
+    // Initializing the data
     PlayerCollection my_players{};
     CLParser parse{argc, argv};
 
+    // Parsing the command line, with validation 
     try
     {
         parse.parse_command_line();
@@ -35,12 +35,14 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    // Commented out while testing CL_Parser
+    // Fetching game settings from CL Parser
     std::string player_name = parse.get_player_name();
     Game::mode mode = parse.get_game_mode();
     int gen_count = parse.get_generator_count();
 
+    // Creating and running the game
     Game my_game{player_name, mode, gen_count};
+    // my_game.play();
 
     return 0;
 }

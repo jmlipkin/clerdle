@@ -26,8 +26,7 @@ class CLParser {
         Game::mode m_mode;
         int m_generator_count;
 
-        // helper members;
-        static const std::string no_name;
+        // helper members
         bool h = false;
         bool s = false;
         bool t = false;
@@ -36,6 +35,7 @@ class CLParser {
         // helper functions
         void evaluate_bools();
         void validate_bools();
+
         // setter functions
         void set_game_mode();
         void set_player_name();
@@ -43,7 +43,9 @@ class CLParser {
 
     public:
         CLParser(int count, char *args[]);
+
         void parse_command_line();
+
         // getter functions
         std::string get_player_name() { return m_player_name; }
         Game::mode get_game_mode() { return m_mode; }

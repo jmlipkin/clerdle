@@ -18,11 +18,6 @@
 #include <exception>
 #include <stdexcept>
 
-// temporary
-#include <iostream>
-
-const std::string CLParser::no_name = "NO NAME";
-
 CLParser::CLParser(int count, char*args[])
 {
     argc = count;
@@ -32,7 +27,7 @@ CLParser::CLParser(int count, char*args[])
         argv.push_back(args[i]);
         i++;
     }
-    m_player_name = no_name;
+    m_player_name = Player::no_name;
     m_mode = Game::mode::usage;
     m_generator_count = 0;
 }
@@ -56,6 +51,7 @@ void CLParser::parse_command_line()
     {
         Game::display_usage();
     }
+    
     set_game_mode();
 }
 
@@ -93,8 +89,7 @@ void CLParser::validate_bools()
 void CLParser::set_game_mode()
 {
     if (s == true) {
-        std::cout << "s is true" << std::endl;
-        if (m_player_name != no_name)
+        if (m_player_name != Player::no_name)
         {
             m_mode = Game::playerstats;
         }
@@ -103,14 +98,12 @@ void CLParser::set_game_mode()
         }
     }
     else if (g == true) {   
-        std::cout << "g is true" << std::endl; 
         m_mode = Game::generate;
     }
     else if (t == true) {
-        std::cout << "t is true" << std::endl;
         m_mode = Game::test;
     }
-    else if (m_player_name == no_name) {
+    else if (m_player_name == Player::no_name) {
 
         m_mode = Game::missing_player;
     }

@@ -22,6 +22,8 @@ class Player {
         Histogram* m_histogram;
 
     public:
+        static const std::string no_name;
+
         Player(std::string name, std::vector<int> game_data);
         ~Player();
         std::string to_string(void);

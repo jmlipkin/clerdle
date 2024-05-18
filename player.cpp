@@ -13,8 +13,7 @@
 #include <string>
 #include <sstream>
 
-// temporary
-#include <iostream>
+const std::string Player::no_name = "NO NAME";
 
 Player::Player(std::string name, std::vector<int> game_data)
 {
