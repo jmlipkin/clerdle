@@ -1,15 +1,18 @@
 #ifndef PUZZLE_H
 #define PUZZLE_H
 
-#include <vector>
+#include <string>
 
 class Puzzle {
     private:
-        std::vector<char> m_solution;
+        std::string m_solution;
     public:
         Puzzle();
-        std::vector<char> get_solution() { return m_solution; }
-        static bool is_valid_equation(const std::vector<char> &guess);
+        std::string get_solution() { return m_solution; }
+        static bool is_valid_equation(const std::string &guess);
+        void print_colored_char(const char &c, size_t i);
+        bool is_correct_place(const char &c, size_t i);
+        bool is_wrong_spot(const char &c, size_t i);
 };
 
 #endif

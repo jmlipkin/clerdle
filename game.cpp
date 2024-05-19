@@ -20,9 +20,8 @@ const std::vector<std::string> Game::mode_map {
     "normal"
 };
 
-const std::string Game::keyboard_key = "1234567890+-*/=";
-
-
+const std::string Game::board_init = "........";
+const std::string Game::keyboard_init = "1234567890+-*/=";
 
 Game::Game(std::string player_name, mode mode, int gen_count)
     : m_player_name(player_name), m_mode(mode), m_generator_count(gen_count)
@@ -68,18 +67,14 @@ void Game::play()
 
 void Game::normal_game()
 {
-    // initialize_board();
-    // draw_board();
-    // draw_keyboard();
+    initialize_board(); // D
+    draw_board();       // TODO -> need edits
+    draw_keyboard();    // TODO
     int trial{};
     for (trial = 0; trial < max_tries; trial++)
     {
-        std::vector<char> guess = parse_guess();
-        if (!Puzzle::is_valid_equation(guess))
-        {
-            trial--;
-            continue;
-        }
+        std::string guess = prompt_for_guess(); // TODO
+
         update_board(guess, trial);
         update_keyboard(guess);
         draw_board();
@@ -90,7 +85,11 @@ void Game::normal_game()
             return;
         }
     }
-    my_players.update_player_data(m_player_name, game_over);
+    if (trial == 6)
+    {
+        my_players.update_player_data(m_player_name, game_over);
+    }
+    my_players.display_player_stats(m_player_name);
 }
 
 void Game::prompt_for_name()
@@ -110,7 +109,55 @@ void Game::prompt_for_name()
     }
 }
 
-bool Game::is_solution(const std::vector<char> &guess)
+std::string Game::prompt_for_guess()
+{
+    bool valid = false;
+    std::string guess{};
+    while (!valid)
+    {
+        guess.clear();
+        std::cout << "Guess? ";
+        getline(std::cin, guess);
+        if (Puzzle::is_valid_equation(guess))
+            valid = true;
+    }
+    return guess;
+}
+
+void Game::initialize_board()
+{
+    for (int i = 0; i < max_tries; i++)
+    {
+        m_board.push_back(board_init);
+    }
+}
+
+void Game::draw_board()
+{
+    using namespace std;
+    for (size_t i = 0; i < max_tries; i++)
+    {
+        for (size_t j = 0; j < m_board[i].size(); j++)
+        {
+            char c = m_board[i][j];
+            m_solution->print_colored_char(c, j);
+        }
+        if (is_solution(m_board[i]))
+        {
+            cout << " <<< "
+                 << Color::setFg(Color::black) << Color::setBg(Color::green)
+                 << "WINNER!" << Color::reset();
+        }
+        cout << endl;
+    }
+}
+
+void Game::update_board(const std::string &guess, const int trial)
+{
+    m_board[trial] = guess;
+}
+
+bool Game::is_solution(const std::string &guess)
 {
     return (guess == m_solution->get_solution());
 }

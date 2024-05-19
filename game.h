@@ -31,30 +31,31 @@ class Game {
         int m_generator_count;
 
         // Board data
-        std::vector<std::vector<char>> m_board;
-        std::vector<char> m_keyboard;
+        std::vector<std::string> m_board;
+        std::string m_keyboard;
 
         // constant game variables
         const int max_tries{6};
         const int game_over{0};
 
-        static const std::string keyboard_key;
+        static const std::string board_init;
+        static const std::string keyboard_init;
 
         // gameplay functions
         void normal_game();
         void prompt_for_name();
-        std::vector<char> parse_guess();
-        bool is_solution(const std::vector<char> &guess);
+        std::string prompt_for_guess();
+        bool is_solution(const std::string &guess);
 
         // setup functions
         void initialize_board();
-        void initialize_keyboard();
+        // void initialize_keyboard();
 
         // board functions
         void draw_board();
-        void draw_keyboard();
-        void update_board(const std::vector<char> &guess, const int trial);
-        void update_keyboard(const std::vector<char> &guess);
+        // void draw_keyboard();
+        void update_board(const std::string &guess, const int trial);
+        // void update_keyboard(const std::string &guess);
 
 
     public:
