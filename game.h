@@ -53,9 +53,9 @@ class Game {
 
         // board functions
         void draw_board();
-        // void draw_keyboard();
+        void draw_keyboard();
         void update_board(const std::string &guess, const int trial);
-        // void update_keyboard(const std::string &guess);
+        void update_keyboard(const std::string &guess);
 
 
     public:

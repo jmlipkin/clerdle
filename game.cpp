@@ -152,9 +152,19 @@ void Game::draw_board()
     }
 }
 
+void Game::draw_keyboard()
+{
+    // TODO
+}
+
 void Game::update_board(const std::string &guess, const int trial)
 {
     m_board[trial] = guess;
+}
+
+void Game::update_keyboard(const std::string &guess)
+{
+    // TODO
 }
 
 bool Game::is_solution(const std::string &guess)

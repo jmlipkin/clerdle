@@ -20,7 +20,7 @@ bool Puzzle::is_valid_equation(const std::string &guess)
         return false;
     if (guess.size() != 8)
         return false;
-    if ()
+    // TODO: add more validation
 }
 
 void Puzzle::print_colored_char(const char&c, size_t i)
